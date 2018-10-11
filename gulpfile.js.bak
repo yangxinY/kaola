@@ -1,0 +1,60 @@
+//console.log("hello world");
+
+const gulp=require("gulp");
+
+//task=>绑定gulp指令；
+gulp.task("hello",()=>{
+    console.log("我的代码在命令行里被执行了");
+})
+
+
+
+//配置index.html 由开发环境转存到 发布环境；
+// gulp.task("html",()=>{
+//     //gulp.src 找到对应的源文件;
+//     //一组数据流 buffer 数据;
+//     return gulp.src("index.html").pipe(gulp.dest("dist/"));
+//     //html与node_modules/gulpfile.js同级
+//     //nodejs的方法 pipe();用来安置buffer数据
+//     //gulp.dest();转存;如果文件夹存在，则表示进入文件夹，如果文件夹不存在，表示创建并进入文件夹
+// })
+
+
+gulp.task("html",()=>{
+    //gulp.src 找到对应的源文件;
+    //一组数据流 buffer 数据;
+    return gulp.src("*.html").pipe(gulp.dest("dist/"));
+    //html与node_modules/gulpfile.js同级
+    //nodejs的方法 pipe();用来安置buffer数据
+    //gulp.dest();转存;如果文件夹存在，则表示进入文件夹，如果文件夹不存在，表示创建并进入文件夹
+})
+
+
+//转存js的script
+gulp.task("script",()=>{
+    // gulp.src(["script/lips/*.js","script/module/*.js","script/app/*.js"])
+    // return gulp.src(["script/*/*.js"])
+    return gulp.src(["script/*/**"])
+    .pipe(gulp.dest("dist/script"));
+})
+
+
+
+
+//默认指令;
+// gulp.task("default",()=>{
+//     console.log("default");
+    
+// })
+
+
+//gulp+指令;
+gulp.task("default",["html","script"]);
+
+
+//监测；
+gulp.task("watch",()=>{
+    //arg1:监测哪个文件；
+    //arg2:文件发生变化执行哪个指令;
+    gulp.watch("index.html",["html"])
+})

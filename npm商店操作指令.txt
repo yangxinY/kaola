@@ -1,0 +1,22 @@
+npm 
+
+// 安装 ; 
+npm insatll node包名;
+
+// 1. 全局安装;
+// 目标 : 让全局命令行都可以执行你需要的指令;
+
+npm install node包名 -g;
+
+// 2. 局部安装;
+// 目标 : 加载核心文件;
+
+npm install node包名;
+
+// 针对当前环境的安装 ; 针对于当前开发环境安装
+
+npm install --save-dev node包名;
+
+
+// 卸载命令;
+npm uninstall node包名;
